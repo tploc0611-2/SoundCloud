@@ -6,6 +6,7 @@ import DynamicUrlTrack from '@/examples/track/remote/dynamic.url.track';
 import BtnTrack from '@/examples/track/remote/btn.track';
 import WavesurferHook from '@/examples/track/remote/wavesurfer.hook';
 import SoundCloudTrack from '@/examples/track/remote/soundcloud.track';
+import ScTime from '@/examples/track/remote/sc.time';
 
 export default function HomePage() {
   return (
@@ -20,7 +21,9 @@ export default function HomePage() {
       {/* <DynamicUrlTrack /> */}
       {/* <WavesurferHook /> */}
       {/* <BtnTrack /> */}
-      <SoundCloudTrack />
+      {/* <SoundCloudTrack /> */}
+      <ScTime />
+
     </div>
 
   );

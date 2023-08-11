@@ -4,7 +4,8 @@
 
 import { useRef, useEffect, useState, useMemo, useCallback } from "react";
 import WaveSurfer, { WaveSurferOptions } from "wavesurfer.js";
-
+import './styles.css';
+import { Container } from "@mui/material";
 // https://wavesurfer-js.org/examples/#react.js
 // WaveSurfer hook
 const useWavesurfer = (containerRef: React.RefObject<HTMLDivElement>, options: Omit<WaveSurferOptions, "container">) => {
@@ -31,7 +32,7 @@ const useWavesurfer = (containerRef: React.RefObject<HTMLDivElement>, options: O
     return wavesurfer;
 }
 
-const SoundCloudTrack = () => {
+const ScTime = () => {
     const waveformRef = useRef<HTMLDivElement>(null);
 
     const options: Omit<WaveSurferOptions, "container"> = useMemo(() => {
@@ -93,15 +94,34 @@ const SoundCloudTrack = () => {
     }, [wavesurfer])
 
 
+    const formatTime = (seconds: number) => {
+        const minutes = Math.floor(seconds / 60)
+        const secondsRemainder = Math.round(seconds) % 60
+        const paddedSeconds = `0${secondsRemainder}`.slice(-2)
+        return `${minutes}:${paddedSeconds}`
+    }
+
+    if (wavesurfer) {
+        const timeEl = document.querySelector('#time')!;
+        const durationEl = document.querySelector('#duration')!;
+        wavesurfer.on('decode', (duration) => (durationEl.textContent = formatTime(duration)))
+        wavesurfer.on('timeupdate', (currentTime) => (timeEl.textContent = formatTime(currentTime)))
+    }
+
+
     return (
-        <>
+        <Container sx={{
+            position: "relative"
+        }}>
             <div ref={waveformRef}>
+                <div id="time">0:00</div>
+                <div id="duration">0:00</div>
             </div>
             <div>
                 <button onClick={() => handlePlayPause()}>Play/Pause</button>
             </div>
-        </>
+        </Container>
     )
 }
 
-export default SoundCloudTrack;
+export default ScTime;
