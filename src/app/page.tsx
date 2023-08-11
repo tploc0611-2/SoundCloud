@@ -7,6 +7,7 @@ import BtnTrack from '@/examples/track/remote/btn.track';
 import WavesurferHook from '@/examples/track/remote/wavesurfer.hook';
 import SoundCloudTrack from '@/examples/track/remote/soundcloud.track';
 import ScTime from '@/examples/track/remote/sc.time';
+import CustomizeRender from '@/examples/track/remote/customize.render';
 
 export default function HomePage() {
   return (
@@ -22,8 +23,8 @@ export default function HomePage() {
       {/* <WavesurferHook /> */}
       {/* <BtnTrack /> */}
       {/* <SoundCloudTrack /> */}
-      <ScTime />
-
+      {/* <ScTime /> */}
+      <CustomizeRender />
     </div>
 
   );
