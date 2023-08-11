@@ -17,8 +17,8 @@ export default function HomePage() {
       {/* <BackendTrack /> */}
       {/* <WaveTrack /> */}
       {/* <DynamicUrlTrack /> */}
-      <WavesurferHook />
-      {/* <BtnTrack /> */}
+      {/* <WavesurferHook /> */}
+      <BtnTrack />
 
     </div>
 

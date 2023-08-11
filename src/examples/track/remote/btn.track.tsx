@@ -1,59 +1,74 @@
 
+
 'use client'
 
-import { useRef, useEffect } from "react";
-import WaveSurfer from "wavesurfer.js";
+import { useRef, useEffect, useState, useMemo, useCallback } from "react";
+import WaveSurfer, { WaveSurferOptions } from "wavesurfer.js";
+
+// https://wavesurfer-js.org/examples/#react.js
+// WaveSurfer hook
+const useWavesurfer = (containerRef: React.RefObject<HTMLDivElement>, options: Omit<WaveSurferOptions, "container">) => {
+    const [wavesurfer, setWavesurfer] = useState<WaveSurfer | null>(null);
+
+    // Initialize wavesurfer when the container mounts
+    // or any of the props change
+    useEffect(() => {
+        if (!containerRef.current) return;
+
+        const ws = WaveSurfer.create({
+            ...options,
+            container: containerRef.current,
+        })
+
+        setWavesurfer(ws);
+
+        //remove duplicate
+        return () => {
+            ws.destroy()
+        }
+    }, [containerRef, options])
+
+    return wavesurfer;
+}
 
 const BtnTrack = () => {
     const waveformRef = useRef<HTMLDivElement>(null);
 
-    useEffect(() => {
-        const a = async () => {
-
-
-        }
-        a();
-
-        if (!waveformRef.current) return;
-        const wavesurfer = WaveSurfer.create({
-            container: waveformRef.current,
+    const options = useMemo(() => {
+        return {
             waveColor: '#4F4A85',
             progressColor: '#383351',
-            // url: `${process.env.NEXT_PUBLIC_BACKEND_URL}/tracks/hoidanit.mp3`,
-            // url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3",
-            // fetchParams: {
-            //     mode: "no-cors",
-            //     // cache: "no-store",
-            //     method: "GET"
-            // },
             url: "/api"
-        });
-
-
-
-        wavesurfer.once('interaction', () => {
-            wavesurfer.play()
-        })
-
-        //remove render twice
-        return () => {
-            wavesurfer.destroy();
         }
     }, []);
 
-
-    const handlePlayPause = () => {
-        // document.querySelector('button').addEventListener('click', () => {
-        //     wavesurfer.playPause()
-        //   })
+    const wavesurfer = useWavesurfer(waveformRef, options);
+    if (wavesurfer) {
+        wavesurfer.once('interaction', () => {
+            wavesurfer.play()
+        })
     }
+
+    // const handlePlayPause = () => {
+    //     if (wavesurfer) {
+    //         wavesurfer.isPlaying() ? wavesurfer.pause() : wavesurfer.play()
+    //     }
+    // }
+
+    const handlePlayPause = useCallback(() => {
+        if (wavesurfer) {
+            wavesurfer.isPlaying() ? wavesurfer.pause() : wavesurfer.play()
+        }
+    }, [wavesurfer])
+
+
     return (
         <>
             <div ref={waveformRef}>
             </div>
-            <button>
-                Play/Pause
-            </button>
+            <div>
+                <button onClick={() => handlePlayPause()}>Play/Pause</button>
+            </div>
         </>
     )
 }
