@@ -1,14 +1,11 @@
 import HeaderDesktop from '@/examples/header/app.header';
 import BackendTrack from '@/examples/track/backend.track';
 import MusicTrack from '@/examples/track/music.track';
-// import WaveTrack from '@/examples/track/wave.track';
-import * as React from 'react';
-import dynamic from 'next/dynamic';
-import RemoteTrack from '@/examples/track/remote.track';
+import WaveTrack from '@/examples/track/wave.track';
+import DynamicUrlTrack from '@/examples/track/remote/dynamic.url.track';
+import BtnTrack from '@/examples/track/remote/btn.track';
+import WavesurferHook from '@/examples/track/remote/wavesurfer.hook';
 
-const WaveTrack = dynamic(() => import('@/examples/track/wave.track'), {
-  ssr: false,
-});
 export default function HomePage() {
   return (
     <div>
@@ -19,7 +16,10 @@ export default function HomePage() {
       {/* <MusicTrack /> */}
       {/* <BackendTrack /> */}
       {/* <WaveTrack /> */}
-      <RemoteTrack />
+      {/* <DynamicUrlTrack /> */}
+      <WavesurferHook />
+      {/* <BtnTrack /> */}
+
     </div>
 
   );

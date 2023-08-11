@@ -1,9 +1,10 @@
+
 'use client'
 
 import { useRef, useEffect } from "react";
 import WaveSurfer from "wavesurfer.js";
 
-const RemoteTrack = () => {
+const BtnTrack = () => {
     const waveformRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -41,12 +42,20 @@ const RemoteTrack = () => {
     }, []);
 
 
+    const handlePlayPause = () => {
+        // document.querySelector('button').addEventListener('click', () => {
+        //     wavesurfer.playPause()
+        //   })
+    }
     return (
         <>
             <div ref={waveformRef}>
             </div>
+            <button>
+                Play/Pause
+            </button>
         </>
     )
 }
 
-export default RemoteTrack;
+export default BtnTrack;
