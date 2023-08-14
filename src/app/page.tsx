@@ -9,6 +9,8 @@ import SoundCloudTrack from '@/examples/track/remote/soundcloud.track';
 import ScTime from '@/examples/track/remote/sc.time';
 import CustomizeRender from '@/examples/track/remote/customize.render';
 import HoverRender from '@/examples/track/remote/hover.render';
+import CommentRender from '@/examples/track/remote/comment.render';
+import TooltipRender from '@/examples/track/remote/tooltip.render';
 
 export default function HomePage() {
   return (
@@ -26,7 +28,9 @@ export default function HomePage() {
       {/* <SoundCloudTrack /> */}
       {/* <ScTime /> */}
       {/* <CustomizeRender /> */}
-      <HoverRender />
+      {/* <HoverRender /> */}
+      {/* <CommentRender /> */}
+      <TooltipRender />
     </div>
 
   );
