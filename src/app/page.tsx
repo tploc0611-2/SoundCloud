@@ -8,6 +8,7 @@ import WavesurferHook from '@/examples/track/remote/wavesurfer.hook';
 import SoundCloudTrack from '@/examples/track/remote/soundcloud.track';
 import ScTime from '@/examples/track/remote/sc.time';
 import CustomizeRender from '@/examples/track/remote/customize.render';
+import HoverRender from '@/examples/track/remote/hover.render';
 
 export default function HomePage() {
   return (
@@ -24,7 +25,8 @@ export default function HomePage() {
       {/* <BtnTrack /> */}
       {/* <SoundCloudTrack /> */}
       {/* <ScTime /> */}
-      <CustomizeRender />
+      {/* <CustomizeRender /> */}
+      <HoverRender />
     </div>
 
   );
