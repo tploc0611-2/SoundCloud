@@ -172,11 +172,13 @@ const CustomizeRender = () => {
 
     return (
         <Container sx={{
-            position: "relative"
+            position: "relative",
+            background: "#373737"
         }}
 
         >
-            <div ref={waveformRef} style={{ border: "1px solid red", position: "relative", overflow: "hidden" }}>
+
+            <div ref={waveformRef} style={{ position: "relative", overflow: "hidden", }}>
                 <div id="time">0:00</div>
                 <div id="duration">0:00</div>
                 <div className="overlay"
@@ -185,9 +187,12 @@ const CustomizeRender = () => {
                         height: "30px",
                         width: "100%",
                         bottom: "0",
-                        background: "#ccc"
+                        // background: "#ccc"
+                        backdropFilter: "brightness(0.5)"
                     }}
-                ></div>
+                >
+
+                </div>
             </div>
 
 
