@@ -58,34 +58,34 @@ export default function SimpleSlider() {
     };
     return (
         <div style={{ margin: "0 50px" }}>
-            <h2> Multiple items </h2>
+            <h2> Multiple tracks </h2>
             <Slider {...settings}>
                 <div className="abc">
-                    <h3>1</h3>
+                    <h3>Track 1</h3>
                 </div>
                 <div className="abc">
-                    <h3>2</h3>
+                    <h3>Track 2</h3>
                 </div>
                 <div className="abc">
-                    <h3>3</h3>
+                    <h3>Track 3</h3>
                 </div>
                 <div className="abc">
-                    <h3>4</h3>
+                    <h3>Track 4</h3>
                 </div>
                 <div className="abc">
-                    <h3>5</h3>
+                    <h3>Track 5</h3>
                 </div>
                 <div className="abc">
-                    <h3>6</h3>
+                    <h3>Track 6</h3>
                 </div>
                 <div className="abc">
-                    <h3>7</h3>
+                    <h3>Track 7</h3>
                 </div>
                 <div className="abc">
-                    <h3>8</h3>
+                    <h3>Track 8</h3>
                 </div>
                 <div className="abc">
-                    <h3>9</h3>
+                    <h3>Track 9</h3>
                 </div>
             </Slider>
         </div>
