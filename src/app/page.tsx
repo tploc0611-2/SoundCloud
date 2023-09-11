@@ -11,6 +11,7 @@ import CustomizeRender from '@/examples/track/remote/customize.render';
 import HoverRender from '@/examples/track/remote/hover.render';
 import CommentRender from '@/examples/track/remote/comment.render';
 import TooltipRender from '@/examples/track/remote/tooltip.render';
+import SimpleSlider from '@/examples/main/slider';
 
 export default function HomePage() {
   return (
@@ -30,7 +31,8 @@ export default function HomePage() {
       {/* <CustomizeRender /> */}
       {/* <HoverRender /> */}
       {/* <CommentRender /> */}
-      <TooltipRender />
+      {/* <TooltipRender /> */}
+      <SimpleSlider />
     </div>
 
   );
