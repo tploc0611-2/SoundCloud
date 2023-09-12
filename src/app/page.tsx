@@ -20,7 +20,7 @@ export default function HomePage() {
       <div style={{ height: "100px" }}>
         adfadsf
       </div>
-      {/* <MusicTrack /> */}
+      <MusicTrack />
       {/* <BackendTrack /> */}
       {/* <WaveTrack /> */}
       {/* <DynamicUrlTrack /> */}
@@ -32,7 +32,7 @@ export default function HomePage() {
       {/* <HoverRender /> */}
       {/* <CommentRender /> */}
       {/* <TooltipRender /> */}
-      <SimpleSlider />
+      {/* <SimpleSlider /> */}
     </div>
 
   );
