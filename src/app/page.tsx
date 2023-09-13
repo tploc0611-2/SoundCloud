@@ -13,6 +13,7 @@ import CommentRender from '@/examples/track/remote/comment.render';
 import TooltipRender from '@/examples/track/remote/tooltip.render';
 import SimpleSlider from '@/examples/main/slider';
 import { sendRequest } from '@/utils/api';
+import { sendRequestJS } from '@/utils/old.api';
 
 export default async function HomePage() {
   // const d = await fetch("http://localhost:8000/api/v1/tracks/top", {
@@ -22,12 +23,19 @@ export default async function HomePage() {
   // })
 
   // console.log(">>> ddd: ", await d.json())
-  const d = await sendRequest<IBackendRes<any>>({
+  // const d = await sendRequest<IBackendRes<any>>({
+  //   url: "http://localhost:8000/api/v1/tracks/top",
+  //   method: "POST",
+  //   body: { category: "CHILL", limit: 10 },
+  // })
+
+  const js = await sendRequestJS({
     url: "http://localhost:8000/api/v1/tracks/top",
     method: "POST",
     body: { category: "CHILL", limit: 10 },
   })
 
+  console.log(">>> check js: ")
   return (
     <div>
       {/* <HeaderDesktop /> */}
