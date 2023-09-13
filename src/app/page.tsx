@@ -12,15 +12,29 @@ import HoverRender from '@/examples/track/remote/hover.render';
 import CommentRender from '@/examples/track/remote/comment.render';
 import TooltipRender from '@/examples/track/remote/tooltip.render';
 import SimpleSlider from '@/examples/main/slider';
+import { sendRequest } from '@/utils/api';
 
-export default function HomePage() {
+export default async function HomePage() {
+  // const d = await fetch("http://localhost:8000/api/v1/tracks/top", {
+  //   method: "POST",
+  //   headers: { "Content-Type": "application/json" },
+  //   body: JSON.stringify({ category: "CHILL", limit: 10 })
+  // })
+
+  // console.log(">>> ddd: ", await d.json())
+  const d = await sendRequest<IBackendRes<any>>({
+    url: "http://localhost:8000/api/v1/tracks/top",
+    method: "POST",
+    body: { category: "CHILL", limit: 10 }
+  })
+  console.log(">>>> check d: ", d)
   return (
     <div>
-      <HeaderDesktop />
+      {/* <HeaderDesktop /> */}
       <div style={{ height: "100px" }}>
         adfadsf
       </div>
-      <MusicTrack />
+      {/* <MusicTrack /> */}
       {/* <BackendTrack /> */}
       {/* <WaveTrack /> */}
       {/* <DynamicUrlTrack /> */}
