@@ -7,14 +7,16 @@ export const sendRequest = async <T>(props: IRequest) => {
         body,
         queryParams = {},
         useCredentials = false,
-        headers = {}
+        headers = {},
+        nextOption = {}
     } = props;
 
     const options: any = {
         method: method,
         // by default setting the content-type to be json type
         headers: new Headers({ 'content-type': 'application/json', ...headers }),
-        body: body ? JSON.stringify(body) : null
+        body: body ? JSON.stringify(body) : null,
+        ...nextOption
     };
     if (useCredentials) options.credentials = "include";
 

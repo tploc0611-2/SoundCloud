@@ -9,6 +9,7 @@ declare global {
         queryParams?: any;
         useCredentials?: boolean;
         headers?: any;
+        nextOption?: any;
     }
 
     interface IBackendRes<T> {

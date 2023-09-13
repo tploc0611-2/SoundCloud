@@ -25,9 +25,9 @@ export default async function HomePage() {
   const d = await sendRequest<IBackendRes<any>>({
     url: "http://localhost:8000/api/v1/tracks/top",
     method: "POST",
-    body: { category: "CHILL", limit: 10 }
+    body: { category: "CHILL", limit: 10 },
   })
-  console.log(">>>> check d: ", d)
+
   return (
     <div>
       {/* <HeaderDesktop /> */}
