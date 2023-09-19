@@ -17,6 +17,7 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
+import { useSession, signIn, signOut } from "next-auth/react"
 
 const Search = styled('div')(({ theme }: { theme: Theme }) => ({
     position: 'relative',
@@ -60,6 +61,9 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 
 export default function HeaderDesktop() {
+    // const { data: session } = useSession()
+
+    // console.log(">>> check session: ", useSession())
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState<null | HTMLElement>(null);
 

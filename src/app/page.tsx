@@ -14,8 +14,13 @@ import TooltipRender from '@/examples/track/remote/tooltip.render';
 import SimpleSlider from '@/examples/main/slider';
 import { sendRequest } from '@/utils/api';
 import { sendRequestJS } from '@/utils/old.api';
+import { getServerSession } from "next-auth/next"
+import { authOptions } from './api/auth/[...nextauth]/route';
 
 export default async function HomePage() {
+  // const session = await getServerSession(authOptions);
+  // console.log(">>> check session server: ", session)
+
   // const d = await fetch("http://localhost:8000/api/v1/tracks/top", {
   //   method: "POST",
   //   headers: { "Content-Type": "application/json" },
@@ -29,16 +34,15 @@ export default async function HomePage() {
   //   body: { category: "CHILL", limit: 10 },
   // })
 
-  const js = await sendRequestJS({
-    url: "http://localhost:8000/api/v1/tracks/top",
-    method: "POST",
-    body: { category: "CHILL", limit: 10 },
-  })
+  // const js = await sendRequestJS({
+  //   url: "http://localhost:8000/api/v1/tracks/top",
+  //   method: "POST",
+  //   body: { category: "CHILL", limit: 10 },
+  // })
 
-  console.log(">>> check js: ")
   return (
     <div>
-      {/* <HeaderDesktop /> */}
+      <HeaderDesktop />
       <div style={{ height: "100px" }}>
         adfadsf
       </div>
