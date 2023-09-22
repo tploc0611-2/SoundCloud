@@ -35,7 +35,7 @@ const AuthLogin = (props: any) => {
     const [errorPassword, setErrorPassword] = useState<string>("");
 
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         setIsErrorUsername(false);
         setIsErrorPassword(false);
         setErrorUsername("");
@@ -51,6 +51,15 @@ const AuthLogin = (props: any) => {
             setErrorPassword("Password is not empty.")
             return;
         }
+
+        const res = await signIn("credentials", {
+            username: username,
+            password: password,
+            redirect: false,
+        })
+
+        //auto push 
+        console.log(">>> check res: ", res)
     }
 
     return (
@@ -152,13 +161,17 @@ const AuthLogin = (props: any) => {
                                 mt: 3
                             }}
                         >
+
                             <Avatar
+                                onClick={() => signIn("github")}
                                 sx={{
                                     cursor: "pointer",
                                     bgcolor: "orange"
                                 }}
                             >
-                                <GitHubIcon titleAccess="Login with Github" />
+                                <GitHubIcon
+
+                                    titleAccess="Login with Github" />
                             </Avatar>
 
                             <Avatar
