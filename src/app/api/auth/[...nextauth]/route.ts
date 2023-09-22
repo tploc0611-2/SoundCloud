@@ -12,6 +12,7 @@ export const authOptions: AuthOptions = {
             clientSecret: process.env.GITHUB_SECRET!,
         }),
         CredentialsProvider({
+
             // The name to display on the sign in form (e.g. "Sign in with...")
             name: "Credentials",
             // `credentials` is used to generate a form on the sign in page.
@@ -26,6 +27,7 @@ export const authOptions: AuthOptions = {
                 // Add logic here to look up the user from the credentials supplied
                 const user = { id: "1", name: "Hỏi Dân IT", email: "hoidanit@gmail.com" }
 
+                if (!credentials?.username) return null;
                 if (user) {
                     // Any object returned will be saved in `user` property of the JWT
                     return user
@@ -55,6 +57,10 @@ export const authOptions: AuthOptions = {
             //modify session => add more information from token
             return session;
         }
+    },
+    pages: {
+        signIn: "auth/signin",
+        // error: "auth/signin"
     }
 }
 const handler = NextAuth(authOptions)
