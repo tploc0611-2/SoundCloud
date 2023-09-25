@@ -8,36 +8,11 @@ import Box from '@mui/material/Box';
 import * as React from 'react';
 import { useDropzone, FileWithPath } from 'react-dropzone';
 import './upload.css';
-import { styled } from '@mui/material/styles';
-import Button from '@mui/material/Button';
-import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+
 interface TabPanelProps {
     children?: React.ReactNode;
     index: number;
     value: number;
-}
-
-const VisuallyHiddenInput = styled('input')({
-    clip: 'rect(0 0 0 0)',
-    clipPath: 'inset(50%)',
-    height: 1,
-    overflow: 'hidden',
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    whiteSpace: 'nowrap',
-    width: 1,
-});
-
-function InputFileUpload() {
-    return (
-        <Button
-            onClick={(e) => e.preventDefault()}
-            component="label" variant="contained" startIcon={<CloudUploadIcon />}>
-            Upload file
-            <VisuallyHiddenInput type="file" />
-        </Button>
-    );
 }
 
 function CustomTabPanel(props: TabPanelProps) {
@@ -75,19 +50,13 @@ const UploadPage = () => {
         setValue(newValue);
     };
 
-    const onDrop = React.useCallback((acceptedFiles: FileWithPath[]) => {
-        // Do something with the files
-        console.log(">>> check ondrop: ")
-    }, [])
-
-    const { acceptedFiles, getRootProps, getInputProps } = useDropzone({ onDrop });
+    const { acceptedFiles, getRootProps, getInputProps } = useDropzone();
 
     const files = acceptedFiles.map((file: FileWithPath) => (
         <li key={file.path}>
             {file.path} - {file.size} bytes
         </li>
     ));
-
 
     return (
         <Container
@@ -108,7 +77,6 @@ const UploadPage = () => {
                     <section className="container">
                         <div {...getRootProps({ className: 'dropzone' })}>
                             <input {...getInputProps()} />
-                            <InputFileUpload />
                             <p>Drag 'n' drop some files here, or click to select files</p>
                         </div>
                         <aside>
