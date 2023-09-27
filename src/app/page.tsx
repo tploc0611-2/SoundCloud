@@ -16,6 +16,7 @@ import { sendRequest } from '@/utils/api';
 import { sendRequestJS } from '@/utils/old.api';
 import { getServerSession } from "next-auth/next"
 import { authOptions } from './api/auth/[...nextauth]/route';
+import CustomLayoutTrack from '@/examples/track/custom.layout.track';
 
 export default async function HomePage() {
   // const session = await getServerSession(authOptions);
@@ -42,7 +43,7 @@ export default async function HomePage() {
 
   return (
     <div>
-      <HeaderDesktop />
+      {/* <HeaderDesktop /> */}
       <div style={{ height: "100px" }}>
         adfadsf
       </div>
@@ -59,6 +60,7 @@ export default async function HomePage() {
       {/* <CommentRender /> */}
       {/* <TooltipRender /> */}
       {/* <SimpleSlider /> */}
+      <CustomLayoutTrack />
     </div>
 
   );
